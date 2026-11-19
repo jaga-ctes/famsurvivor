@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0B2545">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="FamSurvivor calcula cuántos días aguanta tu hogar sin agua, luz ni comunicaciones y te ayuda a armar el plan familiar. Se instala en el teléfono, funciona sin conexión y tus datos no salen de tu dispositivo.">
+  <title>FamSurvivor: cuántos días aguanta tu hogar sin agua, luz ni señal</title>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="FamSurvivor: cuántos días aguanta tu hogar sin agua, luz ni señal">
+  <meta property="og:description" content="Calculá la autonomía de tu hogar y armá el plan familiar. Se instala en el teléfono, funciona sin conexión y tus datos no salen de tu dispositivo.">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/landing.css">
+  <script src="/landing.js" defer></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-logo" viewBox="0 0 24 24"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8 13.5l4-3.5 4 3.5V17H8z"/><path d="M12 6.6v.01"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 15c2.8.1 4.5 1.8 4.5 4.5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></symbol>
+  <symbol id="i-plan" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 3h6v3.5H9zM9 12h6M9 16h4"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16c.5-1.5 1.6-2.2 3-2.2s2.5.7 3 2.2M14.5 10h4M14.5 14h4"/></symbol>
+  <symbol id="i-siren" viewBox="0 0 24 24"><path d="M7 17.5v-5a5 5 0 0 1 10 0v5M5 17.5h14V21H5zM12 3v2M4.5 6.5L6 8M19.5 6.5L18 8"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3.5 4 6 7 6 10.5a6 6 0 0 1-12 0C6 10 8.5 7 12 3z"/></symbol>
+  <symbol id="i-can" viewBox="0 0 24 24"><path d="M6 6c0-1.1 2.7-2 6-2s6 .9 6 2v12c0 1.1-2.7 2-6 2s-6-.9-6-2z"/><path d="M6 6c0 1.1 2.7 2 6 2s6-.9 6-2M6 12c0 1.1 2.7 2 6 2s6-.9 6-2"/></symbol>
+  <symbol id="i-medkit" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M12 10.5v6M9 13.5h6"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 15.5H3zM12 10v4M12 17v.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M8 11l4 4 4-4M5 19.5h14"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-desktop" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z"/><path d="M8.5 12.2l2.5 2.5 4.6-5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="top">
+  <a class="brand" href="/" aria-label="FamSurvivor, inicio">
+    <svg class="i brand-logo" aria-hidden="true" focusable="false"><use href="#i-logo"/></svg>
+    <span class="brand-name">FamSurvivor</span>
+  </a>
+  <nav class="top-nav" aria-label="Secciones de esta página">
+    <a href="#instalar">Instalar</a>
+    <a href="#verificar">Verificar</a>
+    <a href="#manual">Manual</a>
+    <a href="#privacidad">Privacidad</a>
+    <a href="#preguntas">Preguntas</a>
+  </nav>
+  <a class="btn mark" href="/app/">Abrir la app</a>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="titulo">
+    <div class="hero-copy">
+      <h1 id="titulo">Sabé cuántos días aguanta tu casa sin agua, luz ni señal.</h1>
+      <p class="lede">FamSurvivor calcula la autonomía de tu hogar, arma tu lista de compras y deja listo el plan familiar para cuando no hay comunicación. Funciona sin conexión y lo que cargás no sale de tu dispositivo.</p>
+      <div class="actions">
+        <a class="btn primary big" href="#instalar-telefono">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>
+          <span>Instalar en el teléfono</span>
+        </a>
+        <a class="btn big" href="#instalar-compu">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>
+          <span>Descargar para la computadora</span>
+        </a>
+      </div>
+      <p class="aside">¿Querés mirarla primero? <a href="/app/">Abrila en el navegador</a> y tocá «Ver un ejemplo»: carga datos inventados.</p>
+    </div>
+
+    <div class="gauge" role="group" aria-labelledby="gauge-title" id="gauge">
+      <div class="gauge-stripe" aria-hidden="true"></div>
+      <div class="gauge-body">
+        <div>
+          <h2 id="gauge-title">Probá cómo se calcula</h2>
+          <p class="gauge-home">Hogar de ejemplo: 2 adultos y 1 niño de 6 años. Meta: 3 días.</p>
+        </div>
+
+        <p class="gauge-number" aria-hidden="true"><span id="g-days" class="num">2,1</span> <span id="g-unit" class="unit">días</span></p>
+        <p id="g-status" class="badge warn"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg><span id="g-status-text">Tu meta es de 3 días</span></p>
+
+        <ul class="res-list">
+          <li class="res" data-res="agua">
+            <div class="res-head">
+              <label for="r-agua"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-drop"/></svg>Agua</label>
+              <span class="res-days num" id="d-agua">2,1 días</span>
+            </div>
+            <input id="r-agua" type="range" min="0" max="12" step="1" value="4" aria-describedby="v-agua">
+            <p class="res-have" id="v-agua">4 bidones de 6 L</p>
+            <div class="bar" aria-hidden="true"><span class="fill"></span></div>
+            <p class="weak" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Es tu eslabón más débil</p>
+          </li>
+          <li class="res" data-res="comida">
+            <div class="res-head">
+              <label for="r-comida"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-can"/></svg>Comida</label>
+              <span class="res-days num" id="d-comida">3,7 días</span>
+            </div>
+            <input id="r-comida" type="range" min="0" max="60" step="1" value="30" aria-describedby="v-comida">
+            <p class="res-have" id="v-comida">30 raciones de 700 kcal</p>
+            <div class="bar" aria-hidden="true"><span class="fill"></span></div>
+            <p class="weak" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Es tu eslabón más débil</p>
+          </li>
+          <li class="res" data-res="meds">
+            <div class="res-head">
+              <label for="r-meds"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-medkit"/></svg>Medicación</label>
+              <span class="res-days num" id="d-meds">20 días</span>
+            </div>
+            <input id="r-meds" type="range" min="0" max="40" step="1" value="20" aria-describedby="v-meds">
+            <p class="res-have" id="v-meds">20 pastillas, una por día</p>
+            <div class="bar" aria-hidden="true"><span class="fill"></span></div>
+            <p class="weak" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Es tu eslabón más débil</p>
+          </li>
+        </ul>
+
+        <p id="g-missing" class="missing"></p>
+        <p class="gauge-note">Tu hogar aguanta lo que aguante el recurso que primero se acaba. Este ejemplo está simplificado: la app calcula por integrante, con tus datos.</p>
+        <p id="g-live" class="sr-only" role="status"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="que-hace" aria-labelledby="t-que-hace">
+    <div class="wrap">
+      <h2 id="t-que-hace">Cinco pantallas y un botón de emergencia</h2>
+      <p class="lede">Todo se carga en el teléfono, sin cuentas y sin pedir nombres ni documentos.</p>
+      <ul class="screens">
+        <li>
+          <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-home"/></svg>Inicio</h3>
+          <p>Tu autonomía en días, lo que te falta comprar primero y hasta tres cosas para hacer hoy.</p>
+        </li>
+        <li>
+          <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-people"/></svg>Hogar</h3>
+          <p>Quiénes viven en casa, su medicación y las amenazas de tu zona, con qué hacer antes, durante y después.</p>
+        </li>
+        <li>
+          <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-box"/></svg>Despensa</h3>
+          <p>Inventario con vencimientos, lista de compras y revisiones periódicas que llevás a tu calendario.</p>
+        </li>
+        <li>
+          <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plan"/></svg>Plan</h3>
+          <p>Puntos de encuentro, ventana de comunicación, quién hace qué y simulacros con cronómetro.</p>
+        </li>
+        <li>
+          <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-card"/></svg>Ficha</h3>
+          <p>Tarjeta de billetera, hoja para la heladera y checklist de mochila para imprimir. También los respaldos, el cifrado y las fuentes.</p>
+        </li>
+        <li class="screens-alert">
+          <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-siren"/></svg>Emergencia</h3>
+          <p>El botón de arriba, siempre visible. Elegís qué está pasando y ves los pasos en orden, con tus teléfonos y puntos de encuentro a mano. Funciona sin conexión.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="instalar" aria-labelledby="t-instalar">
+    <div class="wrap">
+      <h2 id="t-instalar">Instalala en el teléfono o llevala a la computadora</h2>
+      <p class="lede">Es una app web: no pasa por tiendas. Abrís el enlace, la instalás desde el navegador y queda con su ícono, lista para usar sin conexión.</p>
+
+      <div class="install-grid">
+        <div class="install-col" id="instalar-telefono">
+          <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>En el teléfono</h3>
+          <p>Es la forma recomendada: la tenés a mano y con el Modo Emergencia a un toque.</p>
+
+          <details class="acc" id="inst-android" open>
+            <summary>Android (Chrome)</summary>
+            <ol class="steps">
+              <li>Tocá <a href="/app/">Abrir la app</a>.</li>
+              <li>En la pestaña Ficha, tocá «Instalar FamSurvivor». Si no aparece, abrí el menú ⋮ del navegador y elegí «Instalar app» o «Agregar a la pantalla principal».</li>
+              <li>Abrila desde su ícono. En Ficha tiene que decir «Lista para usarse sin conexión»; si dice que todavía no, abrila una vez más con conexión.</li>
+            </ol>
+          </details>
+
+          <details class="acc" id="inst-ios" open>
+            <summary>iPhone y iPad (Safari)</summary>
+            <ol class="steps">
+              <li>Abrí <a href="/app/">la app</a> en Safari.</li>
+              <li>Tocá Compartir y elegí «Agregar a inicio».</li>
+              <li>Abrila desde su ícono.</li>
+            </ol>
+            <p class="note">Si no la agregás a la pantalla de inicio, Safari puede borrar tus datos después de unos 7 días sin uso. Agregala, o hacé un respaldo desde Ficha.</p>
+          </details>
+        </div>
+
+        <div class="install-col" id="instalar-compu">
+          <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-desktop"/></svg>En la computadora</h3>
+
+          <details class="acc" id="inst-desktop" open>
+            <summary>Instalarla desde Chrome o Edge</summary>
+            <ol class="steps">
+              <li>Tocá <a href="/app/">Abrir la app</a>.</li>
+              <li>Hacé clic en el ícono de instalar que aparece en la barra de direcciones, o en «Instalar FamSurvivor» dentro de Ficha.</li>
+              <li>Se abre en su propia ventana y funciona sin conexión.</li>
+            </ol>
+            <p class="note">Es la mejor opción para el uso diario: guarda tus datos y se actualiza sola.</p>
+          </details>
+
+          <div class="download">
+            <h4>O descargá un archivo .html</h4>
+            <p>Un solo archivo que abrís con doble clic, aunque no tengas internet.</p>
+            <a class="btn primary big" href="/descargas/{{DOWNLOAD_NAME}}" download>
+              <svg class="i" aria-hidden="true" focusable="false"><use href="#i-download"/></svg>
+              <span>Descargar {{DOWNLOAD_NAME}}</span>
+            </a>
+            <p class="small">{{DOWNLOAD_SIZE}}. Versión {{APP_VERSION}}.</p>
+            <p class="note">No se instala ni se actualiza sola. Según el navegador, al abrirlo como archivo local puede no guardar lo que cargues o no ofrecer cifrado: hacé un respaldo desde Ficha.</p>
+            <p class="small"><svg class="i inline-i" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg> <a href="#verificar">Comprobá que el archivo es el original</a> con su huella SHA-256.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="verificar" aria-labelledby="t-verificar">
+    <div class="wrap">
+      <h2 id="t-verificar">Comprobá que lo que descargás es el original</h2>
+      <p class="lede">Cada archivo tiene una huella SHA-256: si cambia un solo byte, la huella es otra. Calculá la del archivo que bajaste y compará con la de acá.</p>
+
+      <div class="verify">
+        <div class="verify-file">
+          <p class="verify-name">
+            <svg class="i" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>
+            <span><strong>{{DOWNLOAD_NAME}}</strong> <span class="small">Versión {{APP_VERSION}} · {{DOWNLOAD_SIZE}}</span></span>
+          </p>
+          <p class="hash-label" id="sha-label">Huella SHA-256</p>
+          <p class="hash"><code id="sha">{{DOWNLOAD_SHA256}}</code></p>
+          <button type="button" class="btn copy" data-copy="sha" hidden>
+            <svg class="i" aria-hidden="true" focusable="false"><use href="#i-copy"/></svg>
+            <span>Copiar la huella</span>
+          </button>
+        </div>
+
+        <div class="verify-steps">
+          <h3>Cómo calcularla</h3>
+          <p>Abrí una terminal en la carpeta donde quedó el archivo (por lo general, Descargas) y escribí:</p>
+          <dl class="cmds">
+            <div><dt>Windows (PowerShell)</dt><dd><code><span class="nw">Get-FileHash</span> <span class="nw">.\{{DOWNLOAD_NAME}}</span> <span class="nw">-Algorithm SHA256</span></code></dd></div>
+            <div><dt>macOS</dt><dd><code><span class="nw">shasum -a 256</span> <span class="nw">{{DOWNLOAD_NAME}}</span></code></dd></div>
+            <div><dt>Linux</dt><dd><code>sha256sum <span class="nw">{{DOWNLOAD_NAME}}</span></code></dd></div>
+          </dl>
+          <p class="small">Windows la muestra en mayúsculas: da lo mismo. Si no coincide, no abras el archivo y descargalo de nuevo desde esta página.</p>
+          <p class="small">La huella también está en <a href="/descargas/SHA256SUMS.txt">SHA256SUMS.txt</a> (con los dos archivos en la misma carpeta: <code><span class="nw">sha256sum -c</span> <span class="nw">SHA256SUMS.txt</span></code>) y es la misma que la del archivo <a href="{{REPO_URL}}/blob/main/source/famsurvivor_standalone.html">source/famsurvivor_standalone.html</a> del repositorio público.</p>
+        </div>
+      </div>
+
+      <details class="acc verify-more">
+        <summary>Huellas de la app instalable, para auditarla</summary>
+        <p>La app de <a href="/app/">/app/</a> es el mismo archivo con tres cambios fuera de su código: el manifest, el registro del Service Worker y el ícono. Estas son las huellas de lo que publica este sitio:</p>
+        <div class="table-wrap">
+          <table class="hashes">
+            <caption class="sr-only">Huellas SHA-256 de los archivos de la app instalable</caption>
+            <thead><tr><th scope="col">Archivo</th><th scope="col">SHA-256</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>/app/</code> (index.html)</th><td><code>{{APP_SHA256}}</code></td></tr>
+              <tr><th scope="row"><code>/app/sw.js</code></th><td><code>{{SW_SHA256}}</code></td></tr>
+              <tr><th scope="row"><code>/app/manifest.webmanifest</code></th><td><code>{{MANIFEST_SHA256}}</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small">Para comprobarlas desde una terminal: <code>curl -s <span data-origin>https://este-sitio</span>/app/ | sha256sum</code></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="band" id="manual" aria-labelledby="t-manual">
+    <div class="wrap">
+      <h2 id="t-manual">Manual</h2>
+      <p class="lede">Lo que hace cada pantalla y cómo se calcula cada número.</p>
+
+      <div class="manual">
+        <nav class="toc" aria-label="Secciones del manual">
+          <ul>
+            <li><a href="#m-primeros">Tus primeros dos minutos</a></li>
+            <li><a href="#m-inicio">Inicio</a></li>
+            <li><a href="#m-hogar">Hogar</a></li>
+            <li><a href="#m-despensa">Despensa</a></li>
+            <li><a href="#m-plan">Plan</a></li>
+            <li><a href="#m-emergencia">Modo Emergencia</a></li>
+            <li><a href="#m-ficha">Ficha</a></li>
+            <li><a href="#m-calculo">Cómo se calcula</a></li>
+          </ul>
+        </nav>
+
+        <div class="manual-body">
+          <section id="m-primeros" aria-labelledby="h-primeros">
+            <h3 id="h-primeros">Tus primeros dos minutos</h3>
+            <ol class="steps">
+              <li>Abrí la app y tocá «Empezar (2 minutos)». Si preferís mirar antes, tocá «Ver un ejemplo»: carga datos inventados que después borrás con «Borrar el ejemplo».</li>
+              <li>Contá cuántas personas y mascotas viven en tu casa, elegí cuántos días querés cubrir (3 es el mínimo recomendado), tu país y tu región. Con eso ya hay cálculo.</li>
+              <li>En Despensa, cargá lo que ya tenés: agua (con los litros de cada bidón), comida (con las calorías del envase o en raciones), pilas, batería portátil y botiquín.</li>
+              <li>Volvé a Inicio. El número grande es tu autonomía en días y «Te falta» te dice qué comprar primero.</li>
+              <li>En Plan, definí el Punto de encuentro A y la ventana de comunicación, y repasalos con tu familia.</li>
+            </ol>
+          </section>
+
+          <section id="m-inicio" aria-labelledby="h-inicio">
+            <h3 id="h-inicio">Inicio</h3>
+            <p>Muestra tu autonomía en días y una barra por recurso. La barra rayada es la que no llega a tu meta, y la etiqueta «Es tu eslabón más débil» marca cuál define el número.</p>
+            <p>Más abajo ves «Para hoy», con hasta tres acciones (reponer lo vencido, hacer una revisión pendiente, definir el punto de encuentro), y los ocho pilares: agua, comida, radio, linterna, batería, efectivo, botiquín y documentos. Cada uno figura como sin empezar, en progreso o cubierto.</p>
+          </section>
+
+          <section id="m-hogar" aria-labelledby="h-hogar">
+            <h3 id="h-hogar">Hogar</h3>
+            <ul class="bullets">
+              <li><strong>Tu hogar.</strong> Barrio o ciudad (opcional y a grandes rasgos: la app no usa GPS ni direcciones), tipo de vivienda, si el agua depende de una bomba eléctrica, tanque, gas, generador, energía solar y vehículo.</li>
+              <li><strong>Integrantes.</strong> Cargalos con alias o roles (Mamá, Abuelo, Rocco), nunca con nombres completos ni documentos. Podés marcar condiciones que cambian la preparación, como embarazo, lactancia, celiaquía o electrodependencia, y cargar medicación: la app divide las unidades por las tomas diarias y te dice para cuántos días alcanza. No indica dosis.</li>
+              <li><strong>Amenazas de tu zona.</strong> Son 16, entre ellas apagón, inundación, sismo, calor extremo y ciberataque a servicios. Elegí una región de referencia para empezar y ajustá cada nivel: no aplica, bajo, medio o alto. Cada una explica qué cambia y qué hacer antes, durante y después, con su fuente.</li>
+            </ul>
+          </section>
+
+          <section id="m-despensa" aria-labelledby="h-despensa">
+            <h3 id="h-despensa">Despensa</h3>
+            <ul class="bullets">
+              <li><strong>Inventario.</strong> Cargá cada producto con su cantidad, vencimiento y dónde lo guardás. Un semáforo con ícono y texto marca lo vencido, lo que vence en menos de 30 días, en menos de 90 o está al día. Lo vencido no suma a tu autonomía.</li>
+              <li><strong>Compras.</strong> La lista sale de lo que te falta para llegar a tu meta: litros de agua y cantidad de bidones, raciones, alimento para mascotas y unidades de medicación. Podés copiarla, compartirla o imprimirla.</li>
+              <li><strong>Revisiones.</strong> Vienen seis sugeridas: rotar el agua, probar linterna y radio, revisar el botiquín, el matafuegos y los documentos, y hacer un simulacro. La app no puede avisarte con la app cerrada, así que exportalas como archivo .ics: quedan en tu calendario como eventos repetidos con alarma.</li>
+            </ul>
+          </section>
+
+          <section id="m-plan" aria-labelledby="h-plan">
+            <h3 id="h-plan">Plan</h3>
+            <ul class="bullets">
+              <li><strong>Encuentro.</strong> El Punto A queda cerca de casa, para salir rápido. El Punto B, fuera del barrio. El C es opcional. La regla se escribe sola: si no estamos juntos y no hay comunicación, vamos al A, esperamos el tiempo que elegiste y después vamos al B.</li>
+              <li><strong>Ventana de comunicación.</strong> Horarios fijos para prender el celular y la radio, entre cada 30 minutos y cada 6 horas. La app te muestra cuánto falta. Probá primero con SMS: suelen pasar cuando la red está saturada y las llamadas no. Sumá un contacto fuera de la zona, al que todos avisan.</li>
+              <li><strong>Teléfonos.</strong> Muestra los números de emergencia del país que elegiste, con toque para llamar, y tus contactos. Anotalos también en papel.</li>
+              <li><strong>Roles.</strong> Una tarea por persona, con dónde y cuándo, para cada situación. Hay plantillas. La tabla «¿Todos lo saben?» marca quién tiene su ficha impresa, conoce los puntos y su rol, y ya hizo el simulacro.</li>
+              <li><strong>Práctica.</strong> Los simulacros corren con cronómetro y una meta de tiempo. Anotás qué falló y quién lo mejora, y la app agenda el próximo. Hay ocho guías rápidas: cortar el gas, la luz y el agua, potabilizar agua, conservar comida sin heladera, monóxido de carbono, usar el matafuegos y orientarse sin red.</li>
+            </ul>
+          </section>
+
+          <section id="m-emergencia" aria-labelledby="h-emergencia">
+            <h3 id="h-emergencia">Modo Emergencia</h3>
+            <p>El botón «Emergencia» está arriba en todas las pantallas. Elegís qué pasa: apagón, corte de agua o de varios servicios, inundación, incendio en casa, calor extremo, sismo, tormenta severa, fuga de gas o monóxido, o evacuación.</p>
+            <p>Ves los pasos en orden, de los primeros 10 minutos hasta las 72 horas, y los tocás a medida que los hacés. Debajo tenés tus datos: teléfonos, puntos de encuentro, tareas de cada integrante, agua disponible y medicación. Mantiene la pantalla encendida si el dispositivo lo permite, no se bloquea sola mientras hay una emergencia en curso y funciona sin conexión. Al terminar guarda un registro.</p>
+          </section>
+
+          <section id="m-ficha" aria-labelledby="h-ficha">
+            <h3 id="h-ficha">Ficha</h3>
+            <ul class="bullets">
+              <li><strong>Imprimir.</strong> Sale en blanco y negro: tarjeta de billetera (una por persona), hoja para la heladera y checklist de mochila. La medicación, las condiciones de salud, la autonomía y el efectivo solo se imprimen si los tildás.</li>
+              <li><strong>Respaldo.</strong> Exportá cifrado (.fsbackup) o sin cifrar (.json) e importá con vista previa, reemplazando todo o combinando. Es la forma de pasar tus datos a otro teléfono y de no perderlos si borrás los datos del navegador. Para mandarlo por mensajería, usá el cifrado.</li>
+              <li><strong>Privacidad.</strong> Cifrado con frase de acceso, bloqueo por inactividad, ocultar datos sensibles en pantalla y borrar todos los datos.</li>
+              <li><strong>Apariencia.</strong> Tema claro, oscuro o negro puro, texto grande y más contraste.</li>
+              <li><strong>Instalación y versión.</strong> El botón de instalar, si ya funciona sin conexión, la búsqueda de actualizaciones y el detalle de fórmulas y fuentes.</li>
+            </ul>
+          </section>
+
+          <section id="m-calculo" aria-labelledby="h-calculo">
+            <h3 id="h-calculo">Cómo se calcula</h3>
+            <p>Estas son las reglas que usa la app. Dentro de la app, Ficha tiene el detalle con la fuente de cada cifra.</p>
+            <div class="table-wrap">
+              <table>
+                <caption class="sr-only">Reglas de cálculo de FamSurvivor</caption>
+                <thead><tr><th scope="col">Qué</th><th scope="col">Regla</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Agua para beber</th><td>3 L por persona y día desde los 9 años. 2 L de 4 a 8 años, 1,5 L de 1 a 3 años y 1 L en bebés, que incluye el agua para preparar su alimento.</td></tr>
+                  <tr><th scope="row">Agua para cocinar</th><td>1 L más por persona y día desde el año.</td></tr>
+                  <tr><th scope="row">Calor extremo</th><td>Si lo marcás en nivel medio o alto: 1 L más por persona (0,5 L en menores de 9 años) y 25 % más para mascotas.</td></tr>
+                  <tr><th scope="row">Higiene</th><td>2 L más por persona y día con el nivel de agua «Recomendado».</td></tr>
+                  <tr><th scope="row">Embarazo y lactancia</th><td>Suman 0,5 L y 1 L de agua por día, y 300 y 500 kcal.</td></tr>
+                  <tr><th scope="row">Mascotas</th><td>Perros, 60 ml por kg y día. Gatos, 50 ml por kg. Mínimo de 0,2 L.</td></tr>
+                  <tr><th scope="row">Comida</th><td>2.100 kcal por persona y día desde los 9 años, 1.400 de 4 a 8, 1.000 de 1 a 3 y 700 en bebés. Una ración equivale a 700 kcal.</td></tr>
+                  <tr><th scope="row">Alimento de mascotas</th><td>Energía en reposo (70 × peso<sup>0,75</sup>) por 1,6 en perros o 1,2 en gatos, a 3,5 kcal por gramo de alimento seco. Es orientativo: mirá la tabla del envase.</td></tr>
+                  <tr><th scope="row">Energía</th><td>12 Wh por celular y día en modo ahorro, más los watts por las horas de cada equipo cargado. De las baterías portátiles cuenta el 70 %.</td></tr>
+                  <tr><th scope="row">Medicación</th><td>Las unidades que tenés, divididas por las tomas de cada día. La app nunca sugiere dosis.</td></tr>
+                  <tr><th scope="row">Autonomía</th><td>El menor valor entre agua, comida, medicación (si la cargaste), alimento de mascotas (si tenés) y energía (solo si hay una persona electrodependiente). Los totales se redondean hacia arriba y los días, hacia abajo.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="privacidad" aria-labelledby="t-privacidad">
+    <div class="wrap">
+      <h2 id="t-privacidad">Lo que cargás es tuyo y se queda en tu dispositivo</h2>
+      <ul class="bullets wide">
+        <li><strong>Sin cuentas ni servidor.</strong> Todo se guarda en el almacenamiento de tu navegador, en tu teléfono o computadora.</li>
+        <li><strong>Sin conexiones.</strong> La app no usa analíticas, notificaciones push ni servicios de terceros, y su política de seguridad le impide enviar datos a ningún sitio. Solo los enlaces a fuentes se abren en tu navegador, y ahí sí hace falta conexión.</li>
+        <li><strong>Sin datos de más.</strong> No pide nombres, documentos ni ubicación exacta, y no usa el GPS.</li>
+        <li><strong>Cifrado opcional.</strong> Podés proteger todo con una frase de acceso: AES-GCM de 256 bits y PBKDF2 con 600.000 iteraciones. Sin la frase no hay forma de recuperar los datos.</li>
+        <li><strong>Esta página</strong> no usa cookies ni analíticas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="limites" aria-labelledby="t-limites">
+    <div class="wrap">
+      <h2 id="t-limites">Una ayuda para organizarte, no un reemplazo</h2>
+      <p class="lede">FamSurvivor no reemplaza las indicaciones de las autoridades ni el consejo médico. En una emergencia real, seguí las instrucciones oficiales y llamá primero a los servicios de emergencia de tu zona.</p>
+      <p class="prose">Cada guía y cada cifra de la app indica su fuente y cuánto se pudo verificar: fuente oficial consultada, confirmada por fuentes secundarias, pendiente de verificación o supuesto de la app. Lo marcado como pendiente conviene contrastarlo con tu Defensa Civil o tu municipio. El contenido se revisó el {{CONTENT_REVIEWED_LONG}}.</p>
+      <p class="prose">¿Querés comprobar los cálculos? <a href="/app/?selftest">Ejecutá la autoprueba</a>: corre los casos de prueba de la app en tu navegador, con datos inventados.</p>
+    </div>
+  </section>
+
+  <section class="band" id="preguntas" aria-labelledby="t-preguntas">
+    <div class="wrap">
+      <h2 id="t-preguntas">Preguntas frecuentes</h2>
+      <div class="faq">
+        <details class="acc">
+          <summary>¿Funciona sin internet?</summary>
+          <p>Sí, después de abrirla con conexión al menos una vez. En Ficha ves «Lista para usarse sin conexión». El Modo Emergencia también funciona sin conexión.</p>
+        </details>
+        <details class="acc">
+          <summary>¿Se actualiza sola?</summary>
+          <p>La app te avisa cuando hay una versión nueva («Hay una versión nueva») y actualizás con un toque. Tus datos no se tocan. El archivo .html descargado no se actualiza: volvé a descargarlo desde esta página.</p>
+        </details>
+        <details class="acc">
+          <summary>¿Qué pasa si cambio de teléfono o borro los datos del navegador?</summary>
+          <p>Los datos viven solo en el dispositivo. Antes de cambiar, exportá un respaldo desde Ficha (cifrado, si lo vas a mandar por mensajería) y, en el teléfono nuevo, tocá «Importar un respaldo».</p>
+        </details>
+        <details class="acc">
+          <summary>¿Cómo borro todo lo que cargué?</summary>
+          <p>En Ficha, dentro de Privacidad, tocá «Borrar todos los datos». No se puede deshacer: si querés conservarlos, exportá un respaldo antes.</p>
+        </details>
+        <details class="acc">
+          <summary>¿Sirve fuera de Argentina?</summary>
+          <p>Está pensada para Argentina: las regiones de referencia son argentinas. Podés elegir otro país de la lista (Uruguay, Chile, México, Colombia, Perú, España, Estados Unidos u otro país de la UE) y la app muestra sus números de emergencia.</p>
+        </details>
+        <details class="acc">
+          <summary>¿Por qué no está en las tiendas de aplicaciones?</summary>
+          <p>Es una app web (PWA): se instala desde el navegador, sin tiendas ni cuentas, y se actualiza desde esta misma dirección.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-info">
+      <p><strong>FamSurvivor</strong>, versión {{APP_VERSION}}. Contenido {{CONTENT_VERSION}}, revisado el {{CONTENT_REVIEWED_LONG}}.</p>
+      <p class="small"><a href="{{REPO_URL}}">Código fuente en GitHub</a> · <a href="#verificar">Huellas SHA-256</a> · <a href="/descargas/SHA256SUMS.txt">SHA256SUMS.txt</a></p>
+      <p class="small">Tipografías Barlow Condensed y Atkinson Hyperlegible Next, con licencia SIL Open Font License.</p>
+    </div>
+    <p class="foot-credit"><span>Diseñado por</span> <a href="https://jagasoluciones.com/">Jagā Soluciones Informáticas</a></p>
+  </div>
+</footer>
+</body>
+</html>

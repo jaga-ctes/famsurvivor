@@ -1,0 +1,12 @@
+# Lo arma el build (en tu compu y en Vercel): no se sube
+dist/
+dist-test/
+tests/fixtures/
+
+# Entorno
+node_modules/
+.vercel/
+.DS_Store
+Thumbs.db
+__pycache__/
+*.log

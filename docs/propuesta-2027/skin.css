@@ -1,0 +1,98 @@
+/* FamSurvivor — propuesta visual 2026-2027: «señalética cálida».
+ * Solo CSS: no toca la estructura ni el código de la app. Se pega al final del <style> de la app.
+ * Para adoptarla de verdad:
+ *   1. Sumar las @font-face de abajo con las tipografías en base64 (woff2) — ver LEEME.md.
+ *   2. Agregar  font-src data:  a la CSP de la app.
+ *   3. npm run seal && npm run release
+ * Todo respeta prefers-reduced-motion, el modo «Más contraste» y el tema Negro puro (OLED). */
+
+/* ---------- 1. tipografías: las mismas del sitio ---------- */
+/* @font-face { font-family: "Atkinson Hyperlegible Next"; font-weight: 200 800; font-display: swap; src: url(data:font/woff2;base64,…) format("woff2"); } */
+/* @font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url(data:font/woff2;base64,…) format("woff2"); } */
+
+/* ---------- 2. tokens: papel cálido, misma marca ---------- */
+:root {
+  --paper: #F6F4EF;             /* blanco cálido (en la línea de «Cloud Dancer», Pantone 2026) */
+  --surface: #FFFEFB;
+  --line: #DDD8CD;
+  --ink: #0B2545;               /* azul marino de marca: no cambia */
+  --ink-2: #44526A;
+  --none-bg: #EEEBE3;
+  --radius: 1rem;
+  --shadow: 0 1px 2px rgb(11 37 69 / 0.06), 0 6px 16px -8px rgb(11 37 69 / 0.18);
+  --press: 0.98;
+  --hazard: repeating-linear-gradient(135deg, var(--mark) 0 0.5rem, var(--ink) 0.5rem 1rem);
+  --sans: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
+  --serif: var(--display);      /* los títulos dejan la serif del sistema y usan la condensada del sitio */
+}
+:root[data-scheme="dark"] {
+  --paper: #0C1322; --surface: #141D30; --line: #2C3A54; --ink: #EEF2F7; --ink-2: #B9C4D5; --none-bg: #1C2740;
+  --shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 8px 20px -10px rgb(0 0 0 / 0.6);
+  --hazard: repeating-linear-gradient(135deg, var(--mark) 0 0.5rem, #0C1322 0.5rem 1rem);
+}
+:root[data-theme="oled"] { --paper: #000; --surface: #0B0B0B; --line: #2A2A2A; --none-bg: #151515; --shadow: none; }
+:root[data-contrast="1"] { --shadow: none; --line: var(--ink); }
+
+/* ---------- 3. texto ---------- */
+body { font-family: var(--sans); font-size: 1.0625rem; line-height: 1.55; }
+h1, h2 { font-family: var(--display); font-weight: 700; letter-spacing: 0; line-height: 1.05; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.625rem; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+.brand-name { font: 700 1.375rem/1 var(--display); letter-spacing: 0.01em; }
+.eyebrow { font-family: var(--sans); letter-spacing: 0.08em; }
+.i { stroke-width: 2; }
+
+/* ---------- 4. superficies con profundidad que explica (sin vidrio) ---------- */
+.card { border-color: transparent; box-shadow: var(--shadow); border-radius: var(--radius); }
+:root[data-contrast="1"] .card, :root[data-theme="oled"] .card { border-color: var(--line); }
+.hero { border-top: 0; position: relative; overflow: hidden; padding-top: 1.5rem; }
+.hero::before { content: ""; position: absolute; inset: 0 0 auto; height: 0.5rem; background: var(--hazard); }
+.big-number .num { font: 700 5.5rem/0.85 var(--display); letter-spacing: -0.01em; }
+.big-number .unit { font: 700 1.75rem/1 var(--display); }
+.bar { height: 0.75rem; border: 0; background: var(--none-bg); }
+.next-step { border-radius: 0.875rem; border-left: 6px solid var(--mark); }
+
+/* pilares: el ícono va en una «placa» como las de señalética */
+.pillar { border-color: transparent; box-shadow: var(--shadow); border-radius: var(--radius); }
+.pillar-icon { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
+  background: color-mix(in oklab, var(--accent) 14%, var(--surface)); }
+.pillar-name { font: 700 1.25rem/1.1 var(--display); }
+
+/* ---------- 5. botones táctiles ---------- */
+.btn { border-radius: 0.875rem; }
+.btn.primary { box-shadow: 0 1px 0 rgb(255 255 255 / 0.25) inset, 0 2px 6px -2px rgb(31 111 178 / 0.5); }
+.chipbtn { border-radius: 999px; }
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .pillar, .rowlink, .em-step { transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease; }
+  .btn:active, .pillar:active, .em-step:active { transform: scale(var(--press)); }
+}
+
+/* ---------- 6. barra de pestañas con indicador activo (patrón Material 3) ---------- */
+.tabs { box-shadow: 0 -6px 16px -12px rgb(11 37 69 / 0.35); border-top-color: transparent; }
+.tabs [role="tab"] { border-top: 0; gap: 0.25rem; }
+.tabs [role="tab"] .i { width: 3.5rem; height: 2rem; padding: 0.25rem 1rem; border-radius: 999px; }
+.tabs [aria-selected="true"] .i { background: color-mix(in oklab, var(--accent) 18%, var(--surface)); color: var(--ink); }
+:root[data-scheme="dark"] .tabs [aria-selected="true"] .i { background: color-mix(in oklab, var(--mark) 22%, var(--surface)); }
+
+/* ---------- 7. hojas que suben (sin JavaScript) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .sheet[open] { transition: translate 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.22s ease; }
+  @starting-style { .sheet[open] { translate: 0 2rem; opacity: 0; } }
+}
+.sheet { border-radius: 1.25rem 1.25rem 0 0; }
+@media (min-width: 40rem) { .sheet { border-radius: 1.25rem; } }
+
+/* ---------- 8. Modo Emergencia: la señal de peligro como encabezado ---------- */
+.em-head { border-bottom: 0; padding-bottom: 1rem; }
+.em-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 0.5rem; background: var(--hazard); }
+.em-head h1 { font-size: 2.25rem; }
+.em-clock .num { font: 700 2.5rem/1 var(--display); }
+.em-step { border-radius: 1rem; }
+.em-num { width: 2.5rem; height: 2.5rem; font: 700 1.25rem/1 var(--display); }
+
+/* ---------- 9. pie ---------- */
+.app-foot { border-top: 0; position: relative; }
+.app-foot::before { content: ""; position: absolute; top: 0; left: 50%; width: 3rem; height: 0.25rem; translate: -50% 0; background: var(--hazard); border-radius: 999px; }

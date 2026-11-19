@@ -1,0 +1,27 @@
+{
+  "name": "famsurvivor-site",
+  "version": "2.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Landing, manual y distribución de FamSurvivor: PWA instalable para el teléfono y archivo .html para la computadora.",
+  "homepage": "https://github.com/jaga-ctes/famsurvivor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaga-ctes/famsurvivor.git"
+  },
+  "author": "Jagā Soluciones Informáticas (https://jagasoluciones.com/)",
+  "scripts": {
+    "seal": "node tools/seal.mjs",
+    "build": "node tools/build.mjs",
+    "check": "node tests/check-dist.mjs",
+    "readme": "node tools/readme-hash.mjs",
+    "release": "node tools/seal.mjs && node tools/readme-hash.mjs && node tools/build.mjs && node tests/check-dist.mjs",
+    "serve": "node tools/serve.mjs",
+    "dev": "node tools/build.mjs && node tools/serve.mjs",
+    "test:pipeline": "node tests/make-fixture.mjs && node tools/build.mjs --source tests/fixtures/mini-standalone.html --out dist-test && node tests/check-dist.mjs --source tests/fixtures/mini-standalone.html --out dist-test",
+    "test:browser": "python3 tests/browser_test.py"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="FamSurvivor">
+  <rect width="512" height="512" fill="#0B2545"/>
+  <path d="M256 104l124 46v92c0 78-52 134-124 156-72-22-124-78-124-156v-92z" fill="#F7F9FC"/>
+  <path d="M256 196l-70 60h22v70h96v-70h22z" fill="#0B2545"/>
+  <rect x="240" y="284" width="32" height="42" rx="4" fill="#F7F9FC"/>
+  <circle cx="256" cy="158" r="13" fill="#FFC72C"/>
+  <path d="M226 150a32 32 0 0 1 60 0" fill="none" stroke="#FFC72C" stroke-width="9" stroke-linecap="round" transform="translate(0 -14)"/>
+</svg>

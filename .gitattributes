@@ -1,0 +1,11 @@
+# Saltos de línea LF en todo el repositorio, también en Windows.
+* text=auto eol=lf
+
+# El archivo de la app se publica byte por byte y su SHA-256 figura en el sitio y en el README:
+# git no tiene que tocarle los saltos de línea al hacer checkout en ninguna plataforma.
+source/famsurvivor_standalone.html -text
+
+# Binarios
+*.png binary
+*.ico binary
+*.woff2 binary

@@ -1,0 +1,9 @@
+Acá va el archivo de la app: famsurvivor_standalone.html (con ese nombre exacto).
+El build arma la PWA (/app/) y la descarga (/descargas/) a partir de él. Sin este archivo el build se detiene a propósito.
+
+Si lo editás a mano (por ejemplo, el <style> o el <script>), corré después:
+
+    npm run seal
+
+Recalcula las huellas de la política de seguridad (CSP). Sin eso el navegador bloquea el bloque editado entero
+y la app se ve sin estilos o en blanco. El build lo controla y se detiene si te olvidaste.

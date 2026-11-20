@@ -1,5 +1,18 @@
 # Cambios
 
+## 2.0.2 — 19 de noviembre de 2026
+
+Correcciones detectadas con el sitio ya publicado. El contenido sigue siendo `2026.11.1`.
+
+| # | Qué pasaba | Arreglo |
+| --- | --- | --- |
+| 1 | **Edades en la configuración inicial:** «Personas de 9 años o más» se guardaban como «Adulto/a (18 a 64)», y «1 a 8 años» como «4 a 8». En Hogar se veía otra edad, y a un chico de 9 a 13 años la app le podía asignar tareas del plan y contarle un celular | La configuración pregunta por las mismas siete franjas de edad que el editor de Hogar, y cada integrante se crea con la suya. Las tareas del plan siguen yendo solo a mayores de 14 |
+| 2 | **Regiones:** con otro país elegido, se seguían ofreciendo las regiones de Argentina (y se podía aplicar su perfil de amenazas) | Las regiones aparecen solo con Argentina. En otro país se usa el perfil genérico y la app avisa que hay que ajustar cada amenaza. Al cambiar el país en «Datos del hogar», la región vuelve a «Genérico» |
+
+Suma dos pruebas al autodiagnóstico (`?selftest`, 30 en total) y un tope de 40 integrantes con mascotas en la configuración.
+
+**En el código modular:** el formulario de alta rápida genera un campo por franja (`band_<id>`, en el orden adulto, mayor, adol, n9, n4, n1, bebe) y la función de alta rápida crea cada integrante con esa franja (sigue aceptando `adults`, `kids` y `babies`). La región: `showIf` con `country === "AR"` en el alta, normalización a `"generico"` fuera de Argentina, el mismo reset en «Datos del hogar» y el selector de amenazas filtrado.
+
 ## 2.0.1 — 19 de noviembre de 2026
 
 Versión de correcciones. El contenido (cifras, guías y fuentes) no cambia: sigue siendo `2026.11.1`, revisado el 11/11/2026.

@@ -39,7 +39,7 @@ El archivo para la computadora es **idéntico, byte por byte,** a [`source/famsu
 
 | Archivo | Versión | Tamaño | SHA-256 |
 | --- | --- | --- | --- |
-| `FamSurvivor-v2.html` | 2.0.1 | 220 KB | `7880eade85ff74be7fe5bf89263d1fe7f187849f009616a84c6b7b8fce8ed5dd` |
+| `FamSurvivor-v2.html` | 2.0.2 | 222 KB | `0f83639dbf766e8ce5aa7311316fb196c8d05d648a773fd055f65c0b69b9bb89` |
 
 <!-- sha256:fin -->
 

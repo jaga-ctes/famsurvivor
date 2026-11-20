@@ -1,6 +1,6 @@
 {
   "name": "famsurvivor-site",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": true,
   "type": "module",
   "description": "Landing, manual y distribución de FamSurvivor: PWA instalable para el teléfono y archivo .html para la computadora.",

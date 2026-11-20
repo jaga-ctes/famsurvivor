@@ -1,6 +1,8 @@
 # Propuesta visual 2026-2027 — «señalética cálida»
 
-Una capa de estilos **solo CSS** para la app: no cambia la estructura, el código ni los datos. Es una propuesta: **no está aplicada** en la versión 2.0.1 (por eso las huellas SHA-256 publicadas no la incluyen).
+Una capa de estilos **solo CSS** para la app: no cambia la estructura, el código ni los datos.
+
+**Aplicada desde la versión 2.1.0**, en la app y en el sitio, con las tipografías incluidas. Este archivo y `skin.css` quedan como referencia de qué se cambió y por qué; las capturas comparan la 2.0.1 con la propuesta.
 
 | Antes y después | |
 | --- | --- |

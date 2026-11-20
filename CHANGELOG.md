@@ -1,5 +1,42 @@
 # Cambios
 
+## 2.1.0 — 20 de noviembre de 2026
+
+Versión de funciones: idiomas, modos de pantalla y la propuesta visual «señalética cálida». Los cálculos y el contenido (cifras, guías y fuentes) no cambian: sigue siendo `2026.11.1`.
+
+### Idiomas
+
+- **La app, en español (por defecto), inglés, portugués de Brasil y francés.** Se elige en la bienvenida, antes de empezar, o en Ficha → Apariencia. Cambia toda la interfaz, el Modo Emergencia, las guías, las amenazas, los pilares, los productos sugeridos, las plantillas de roles, las regiones, los números de emergencia y las fuentes. También el idioma del documento (`lang`) y el formato de números y fechas.
+- Al cambiar de idioma, los textos por defecto que la app ya había creado (revisiones, tareas de las plantillas, datos del ejemplo, nombres como «Adulto 1») pasan al idioma nuevo; lo que escribió el usuario queda como está.
+- La pantalla de bloqueo (con cifrado activo) sale en el idioma elegido.
+- Traducciones en `i18n/*.json`; `npm run i18n` las valida (claves, marcadores `{x}`, contenido completo) y las incrusta en la app. `npm run release` lo hace solo.
+- El sitio sigue en español (el navegador lo traduce si hace falta). La landing ahora cuenta que la app está en cuatro idiomas.
+
+### Modos de pantalla
+
+- Ficha → Apariencia ofrece **Automático** (sigue al teléfono), **Día**, **Noche** y **Ahorro de batería**, como botones visibles en vez de una lista.
+- **Ahorro de batería:** negro puro (la barra del navegador también) y, ahora, sin sombras, transiciones ni animaciones.
+
+### Propuesta visual aplicada, en la app y en el sitio
+
+- Tipografías del sitio dentro de la app: Atkinson Hyperlegible Next para leer y Barlow Condensed para títulos y números, incluidas en el archivo (licencia SIL OFL 1.1, aviso en el CSS). La CSP suma `font-src data:` y nada más.
+- Papel cálido, tarjetas con sombra suave en lugar de bordes, cinta de peligro amarilla y azul marino (autonomía, Modo Emergencia, pie, descarga y verificación en el sitio), íconos en placas, pestaña activa con pastilla, botones que se hunden al tocarlos, hojas que suben, número de autonomía condensado, íconos a 2 px y títulos que cortan mejor.
+- Todo respeta «reducir movimiento», «Más contraste» (vuelven los bordes) y el modo de ahorro.
+
+### Pruebas
+
+- Autodiagnóstico: 34 pruebas (4 nuevas de idiomas).
+- axe-core sin violaciones ni desbordes en 24 combinaciones: 4 idiomas × día, noche y ahorro × 320 y 390 px.
+- Recorrido completo en cada idioma (pestañas, subpestañas, formularios y Modo Emergencia) sin textos en español ni claves sin traducir.
+
+### Tamaño
+
+La descarga pasa de 222 KB a 483 KB: unos 75 KB por las tipografías y unos 170 KB por los tres idiomas. Sigue siendo un solo archivo, sin pedidos de red.
+
+### Para tener en cuenta
+
+Las traducciones las hizo una IA a partir del español y se probaron en la app, pero ninguna persona nativa las revisó todavía. Conviene que alguien las lea antes de difundir la app en esos idiomas, sobre todo los pasos de emergencia.
+
 ## 2.0.2 — 19 de noviembre de 2026
 
 Correcciones detectadas con el sitio ya publicado. El contenido sigue siendo `2026.11.1`.

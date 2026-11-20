@@ -1,4 +1,4 @@
-/* FamSurvivor — landing, presentación y manual.
+/* FamSurvivor — landing, presentación y manual. Desde 2.1.0, con la capa «señalética cálida» de la app (docs/propuesta-2027).
    Sistema: señalética de protección civil. Marca = azul marino · Acción = azul cívico · Resalte = amarillo de seguridad.
    Verde y ámbar solo para estados. Mismos colores que la app, para que sitio y app se lean como una sola cosa. */
 
@@ -7,9 +7,9 @@
 @font-face { font-family: "Atkinson Hyperlegible Next"; font-weight: 200 800; font-style: normal; font-display: swap; src: url("/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2") format("woff2"); }
 
 :root {
-  --paper: #F4F6F9; --surface: #FFFFFF; --ink: #0B2545; --ink-2: #3B4F6B; --line: #CBD5E3;
+  --paper: #F6F4EF; --surface: #FFFEFB; --ink: #0B2545; --ink-2: #44526A; --line: #DDD8CD;
   --accent: #1F6FB2; --accent-ink: #FFFFFF; --mark: #FFC72C; --mark-ink: #0B2545;
-  --ok: #1B6E3C; --ok-bg: #E4F3E9; --warn: #8A5300; --warn-bg: #FFF1CF; --none-bg: #E8EDF4;
+  --ok: #1B6E3C; --ok-bg: #E4F3E9; --warn: #8A5300; --warn-bg: #FFF1CF; --none-bg: #EEEBE3;
   --header: #0B2545; --header-ink: #FFFFFF;
   --panel: #0B2545; --panel-ink: #F4F8FD; --panel-2: #B9C8DD; --panel-line: #2A4670;
   --p-ok: #7FDC9E; --p-ok-bg: #12301F; --p-warn: #FFC72C; --p-warn-bg: #3A2A08;
@@ -21,9 +21,9 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #0E1626; --surface: #162238; --ink: #EAF0F8; --ink-2: #B7C3D6; --line: #33445F;
+    --paper: #0C1322; --surface: #141D30; --ink: #EEF2F7; --ink-2: #B9C4D5; --line: #2C3A54;
     --accent: #7DBBEE; --accent-ink: #06203A;
-    --ok: #7FDC9E; --ok-bg: #12301F; --warn: #FFC766; --warn-bg: #3A2A08; --none-bg: #1F2D47;
+    --ok: #7FDC9E; --ok-bg: #12301F; --warn: #FFC766; --warn-bg: #3A2A08; --none-bg: #1C2740;
     --header: #0A1220; --panel: #0A1220; --panel-line: #2B3E5E;
     color-scheme: dark;
   }
@@ -233,3 +233,40 @@ tbody th { width: 9.5rem; font-weight: 700; padding-right: 1rem; }
 @media (min-width: 52rem) { .foot-credit { justify-items: end; text-align: right; } }
 .foot-credit span { font-size: 0.875rem; color: #B9C8DD; }
 .foot-credit a { display: inline-flex; align-items: center; min-height: 2.75rem; font: 700 1.5rem/1.1 var(--display); letter-spacing: 0.01em; text-underline-offset: 0.2em; }
+
+/* ---------- 2.1.0 · «señalética cálida»: la misma capa visual que la app ---------- */
+:root {
+  --radius: 1rem;
+  --shadow: 0 1px 2px rgb(11 37 69 / 0.06), 0 6px 16px -8px rgb(11 37 69 / 0.18);
+  --hazard: repeating-linear-gradient(135deg, var(--mark) 0 0.5rem, #0B2545 0.5rem 1rem);
+}
+@media (prefers-color-scheme: dark) { :root { --shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 8px 20px -10px rgb(0 0 0 / 0.6); } }
+.i { stroke-width: 2; }
+h1, h2, h3 { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+
+/* superficies con profundidad que explica (sin vidrio): sombra suave y la cinta de peligro arriba */
+.download, .verify-file { position: relative; overflow: hidden; border: 0; border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding-top: 1.75rem; }
+.download::before, .verify-file::before { content: ""; position: absolute; inset: 0 0 auto; height: 0.5rem; background: var(--hazard); }
+.gauge { border-radius: var(--radius); box-shadow: var(--shadow), 0 0 0 1px var(--panel-line); }
+.note { border-radius: 0 0.875rem 0.875rem 0; }
+.hash code, .code, .cmds code, .cmds code { border-radius: 0.5rem; }
+.steps > li::before { border-radius: 0.625rem; }
+
+/* botones táctiles: se hunden al tocarlos, solo si no se pidió reducir el movimiento */
+.btn { border-radius: 0.875rem; }
+.btn.primary { box-shadow: 0 1px 0 rgb(255 255 255 / 0.25) inset, 0 2px 6px -2px rgb(31 111 178 / 0.5); }
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: transform 0.12s ease, background-color 0.12s ease, filter 0.12s ease; }
+  .btn:active { transform: scale(0.98); }
+}
+
+/* pie: la cinta como firma, igual que en el Modo Emergencia */
+.foot { position: relative; border-top: 0; padding-top: calc(2.25rem + 0.5rem); }
+.foot::before { content: ""; position: absolute; inset: 0 0 auto; height: 0.5rem; background: var(--hazard); }
+
+/* con «más contraste» vuelven los bordes y se van las sombras */
+@media (prefers-contrast: more) {
+  :root { --shadow: none; }
+  .download, .verify-file { border: 1.5px solid var(--ink); }
+}

@@ -7,3 +7,6 @@ Si lo editás a mano (por ejemplo, el <style> o el <script>), corré después:
 
 Recalcula las huellas de la política de seguridad (CSP). Sin eso el navegador bloquea el bloque editado entero
 y la app se ve sin estilos o en blanco. El build lo controla y se detiene si te olvidaste.
+
+Los idiomas (inglés, portugués, francés) van incrustados entre /*I18N*/ y /*/I18N*/: no los edites acá.
+Se editan en i18n/*.json y se incrustan con  npm run i18n  (npm run release lo hace solo).

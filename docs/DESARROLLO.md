@@ -17,6 +17,8 @@ Todo sale de **un solo archivo de la app**: `source/famsurvivor_standalone.html`
 | `source/famsurvivor_standalone.html` | La app. Es lo único que cambia cuando sale una versión nueva |
 | `site/` | La landing tal cual se publica: `index.html`, `landing.css`, `landing.js`, íconos y tipografías |
 | `site.config.json` | Versiones que muestra la landing, nombre de la descarga y dirección del repositorio |
+| `i18n/` | Traducciones de la app: `es-AR.json` (referencia), `en.json`, `pt-BR.json`, `fr.json` |
+| `tools/i18n.mjs` | Valida las traducciones y las incrusta en la app |
 | `tools/seal.mjs` | Recalcula las huellas de la CSP de la app después de editarla a mano |
 | `tools/build.mjs` | Arma `dist/` (lo corre también Vercel) |
 | `tools/readme-hash.mjs` | Escribe en el README la huella SHA-256 de la descarga |
@@ -31,8 +33,9 @@ Todo sale de **un solo archivo de la app**: `source/famsurvivor_standalone.html`
 Hace falta Node 22 o más nuevo (recomendado: la versión LTS actual; Node 20 ya no tiene soporte y Vercel lo dio de baja el 1 de octubre de 2026). No hay dependencias que instalar.
 
 ```bash
-npm run release   # sella la CSP, actualiza la huella del README, arma dist/ y corre las comprobaciones
+npm run release   # incrusta los idiomas, sella la CSP, actualiza la huella del README, arma dist/ y corre las comprobaciones
 npm run dev       # arma dist/ y lo sirve en http://localhost:4173
+npm run i18n      # solo validar e incrustar los idiomas (--check: solo validar)
 npm run seal      # solo sellar la CSP (después de editar el <script> o el <style> de la app)
 npm run build     # solo armar dist/
 npm run check     # solo las 14 comprobaciones
@@ -84,7 +87,18 @@ python3 tests/browser_test.py --dir dist --source source/famsurvivor_standalone.
 
 `browser_test.py` prueba el medidor de la portada, accesibilidad con axe-core (claro y oscuro), los créditos del pie y su contraste, la descarga y su huella, el botón de copiar, que Chrome dé la app por instalable, el Service Worker, la recarga sin conexión y los encabezados. Funciona igual con la réplica y con la app real.
 
-Dentro de la app, `/app/?selftest` corre las 28 pruebas de los cálculos en el navegador.
+Dentro de la app, `/app/?selftest` corre 34 pruebas en el navegador: los cálculos y, desde la 2.1.0, que cada idioma tenga todos los textos de la interfaz y del contenido, con los mismos marcadores `{x}`.
+
+## Idiomas
+
+La app está en español (por defecto), inglés, portugués de Brasil y francés. Se elige en la bienvenida o en Ficha → Apariencia, y el idioma elegido se recuerda aparte, para que también la pantalla de bloqueo salga en ese idioma.
+
+- **Interfaz** (`d`): las mismas claves que el diccionario de la app (`var dt={…}`), con los mismos marcadores `{x}`.
+- **Contenido** (`c`): amenazas, pasos de emergencia, guías, pilares, productos sugeridos, roles, regiones y fuentes. Se traduce por frase: la clave es el texto en español tal como está en la app. La app cambia esos textos en memoria; los `id` no se tocan.
+- **Lo que ya está guardado:** al cambiar de idioma, los textos por defecto que la app había creado (revisiones, tareas de las plantillas, datos del ejemplo, nombres como «Adulto 1») pasan al idioma nuevo. Lo que escribió el usuario queda como está.
+- **Unidades:** se guardan con su id en español (`unidad`, `ración`…) y solo cambia cómo se muestran (`unit.<id>_one` / `_other`).
+
+Para corregir una traducción: editá `i18n/<idioma>.json` y corré `npm run release`. Si cambiás un texto en español dentro de la app, corré `npm run i18n -- --sync-es` y actualizá las traducciones: la herramienta avisa qué falta y el autodiagnóstico falla si queda algo sin traducir.
 
 ## Límites que conviene conocer
 
@@ -93,7 +107,8 @@ Dentro de la app, `/app/?selftest` corre las 28 pruebas de los cálculos en el n
 - **Falta probar en teléfonos reales** (instalación, safe areas, Wake Lock, `tel:`) y con lector de pantalla (TalkBack/VoiceOver): todo se probó en Chrome headless.
 - **Contenido pendiente de validar** con Defensa Civil o la autoridad local: la app marca cada cifra con su fuente y su estado de verificación.
 - La landing no instala la app por sí misma: el alcance de la PWA es `/app/`.
+- **Traducciones:** las hizo una IA a partir del español y se probaron en la app, pero no las revisó una persona nativa de cada idioma. Antes de difundirlas, conviene que alguien las lea, sobre todo los pasos de emergencia.
 
 ## Si tenés el código modular de la app
 
-La app v2 se escribió en módulos (`js/core`, `js/store`, `js/ui`, `content/`) y se compiló a este archivo único. Los arreglos de la 2.0.1 se hicieron directamente sobre el archivo compilado; si volvés a compilar desde los módulos, pasales los mismos cambios antes (están descriptos uno por uno en el [CHANGELOG](../CHANGELOG.md)), o se pierden.
+La app v2 se escribió en módulos (`js/core`, `js/store`, `js/ui`, `content/`) y se compiló a este archivo único. Los arreglos de la 2.0.1 y la 2.0.2, la capa visual y los idiomas de la 2.1.0 se hicieron directamente sobre el archivo compilado; si volvés a compilar desde los módulos, pasales los mismos cambios antes (están descriptos uno por uno en el [CHANGELOG](../CHANGELOG.md)), o se pierden.

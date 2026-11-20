@@ -12,8 +12,9 @@ FamSurvivor (FamilySurvivor) es una app web gratuita para preparar hogares ante 
 - **Hogar:** quiénes viven en casa (con alias, nunca nombres completos), su medicación y las amenazas de tu zona, con qué hacer antes, durante y después.
 - **Despensa:** inventario con vencimientos, lista de compras que sale sola de lo que falta y revisiones periódicas que podés llevar al calendario del teléfono.
 - **Plan:** puntos de encuentro, ventana de comunicación, teléfonos de emergencia de tu país, roles y simulacros con cronómetro.
-- **Ficha:** tarjeta de billetera, hoja para la heladera y checklist de mochila para imprimir; respaldos cifrados, privacidad y apariencia.
+- **Ficha:** tarjeta de billetera, hoja para la heladera y checklist de mochila para imprimir; respaldos cifrados, privacidad, idioma y modo de pantalla (automático, día, noche o ahorro de batería).
 - **Modo Emergencia:** un botón siempre visible. Elegís qué está pasando y ves los pasos en orden, con tus teléfonos y puntos de encuentro a mano.
+- **En cuatro idiomas:** español, inglés, portugués y francés, incluidas las guías y los pasos de emergencia. Se elige en la bienvenida o en Ficha.
 
 ## Cómo usarla
 
@@ -39,7 +40,7 @@ El archivo para la computadora es **idéntico, byte por byte,** a [`source/famsu
 
 | Archivo | Versión | Tamaño | SHA-256 |
 | --- | --- | --- | --- |
-| `FamSurvivor-v2.html` | 2.0.2 | 222 KB | `0f83639dbf766e8ce5aa7311316fb196c8d05d648a773fd055f65c0b69b9bb89` |
+| `FamSurvivor-v2.html` | 2.1.0 | 483 KB | `8bb01db84c1ff60b0d8055230f53abc3094ea3ce8921e55396245e76d665a7ae` |
 
 <!-- sha256:fin -->
 
@@ -58,8 +59,10 @@ Tiene que dar exactamente la huella de arriba (Windows la muestra en mayúsculas
 - Un solo archivo HTML con su CSS y su JavaScript, sin frameworks ni dependencias. Funciona abierto como archivo y como PWA instalable.
 - Datos locales (IndexedDB, con respaldo en `localStorage`), cifrado con la Web Crypto API del navegador y respaldos `.fsbackup` o `.json`.
 - Sitio estático en Vercel: landing con manual, PWA en `/app/` con Service Worker y la descarga en `/descargas/`.
-- Accesible: probado con axe-core (WCAG 2.2 AA) en modo claro y oscuro, objetivos táctiles de 44 px y texto grande opcional.
-- 28 pruebas de los cálculos dentro de la app (`/app/?selftest`), 14 comprobaciones del build y 40 pruebas en navegador.
+- Accesible: probado con axe-core (WCAG 2.2 AA) en los cuatro idiomas y en los modos día, noche y ahorro de batería, objetivos táctiles de 44 px y texto grande opcional.
+- Tipografías Atkinson Hyperlegible Next (pensada para baja visión) y Barlow Condensed, incluidas en el archivo: sin pedidos a otros sitios.
+- Traducciones en `i18n/`, validadas e incrustadas en la app por `npm run i18n`.
+- 34 pruebas de los cálculos y de los idiomas dentro de la app (`/app/?selftest`), 14 comprobaciones del build y 40 pruebas en navegador.
 
 ## Para desarrollar
 
